@@ -1,13 +1,17 @@
-import { useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
 
-export const SearchForm = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+export const SearchForm = ({ onSubmit }) => {
+  const [searchRequest, setSearchRequest] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
-    setSearchParams({ query: e.target[0].value });
+    const currentSearchRequest = e.target[0].value;
 
-    return;
+    if (currentSearchRequest === '') {
+      alert('Enter at least one word');
+    }
+    onSubmit(currentSearchRequest);
+    setSearchRequest('');
   };
 
   return (

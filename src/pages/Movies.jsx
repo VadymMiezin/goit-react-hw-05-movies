@@ -8,8 +8,13 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const movieTitle = searchParams.get('query');
+
+  const handleSearchSubmit = query => {
+    setSearchParams({ query });
+  };
+
   useEffect(() => {
-    const movieTitle = searchParams.get('query');
     if (movieTitle) {
       API.searchMovies(movieTitle).then(data => setMovies(data));
     }
@@ -17,7 +22,7 @@ const Movies = () => {
 
   return (
     <div>
-      <SearchForm />
+      <SearchForm onSubmit={handleSearchSubmit} />
       <TrendingList movies={movies} />
     </div>
   );
