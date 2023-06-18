@@ -8,6 +8,10 @@ const MovieDetailsPage = () => {
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/movies';
 
+  if (!movieDetails) {
+    return;
+  }
+
   return (
     <div>
       <Link to={backLinkHref}>
@@ -24,7 +28,11 @@ const MovieDetailsPage = () => {
       </h2>
 
       <img
-        src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2${movieDetails.poster_path}`}
+        src={
+          movieDetails.poster_path
+            ? `https://image.tmdb.org/t/p/w300_and_h450_bestv2${movieDetails.poster_path}`
+            : `https://upload.wikimedia.org/wikipedia/commons/2/2b/No-Photo-Available-240x300.jpg`
+        }
         alt="{movieDetails.original_title}"
       />
 

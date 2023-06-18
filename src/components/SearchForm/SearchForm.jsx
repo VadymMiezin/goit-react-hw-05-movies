@@ -8,8 +8,9 @@ export const SearchForm = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleSubmit = e => {
-    setSearchParams({ query: e.target[0].value });
     e.preventDefault();
+    setSearchParams({ query: e.target[0].value });
+
     return;
   };
 

@@ -14,7 +14,11 @@ const Cast = () => {
             <li key={cast.id}>
               <img
                 width={100}
-                src={`https://image.tmdb.org/t/p/w300_and_h450_bestv2/${cast.profile_path}`}
+                src={
+                  cast.profile_path
+                    ? `https://image.tmdb.org/t/p/w300_and_h450_bestv2/${cast.profile_path}`
+                    : `https://upload.wikimedia.org/wikipedia/commons/2/2b/No-Photo-Available-240x300.jpg`
+                }
                 alt={cast.name}
               />
               <p>{cast.name}</p>
