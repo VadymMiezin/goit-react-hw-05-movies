@@ -6,7 +6,7 @@ const MovieDetailsPage = () => {
   const { movieDetails } = useMovieDetails(movieId);
 
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  const backLinkHref = location.state?.from ?? '/movies';
 
   return (
     <div>
